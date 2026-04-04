@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manus POC — Edit Text in Images</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <!-- ── Image Display ─────────────────────────────── -->
+    <section class="image-section">
+      <div class="image-wrapper" id="imageWrapper">
+        <img
+          id="mainImage"
+          src="images/sample-1.png"
+          alt="AI-generated post"
+          crossorigin="anonymous"
+        >
+        <div class="image-overlay" id="imageOverlay">
+          <span>Click to edit text</span>
+        </div>
+      </div>
+
+      <!-- Image picker -->
+      <div class="image-picker">
+        <button class="picker-btn active" data-src="images/sample-1.png">Image 1</button>
+        <button class="picker-btn" data-src="images/sample-3.png">Image 2</button>
+      </div>
+    </section>
+
+    <!-- ── Edit Panel (hidden by default) ────────────── -->
+    <section class="edit-panel hidden" id="editPanel">
+      <h2>Detected Text</h2>
+
+      <!-- Loading: detecting text -->
+      <div class="loading hidden" id="loadingOcr">
+        <div class="spinner"></div>
+        <span>Detecting text…</span>
+      </div>
+
+      <!-- Text inputs rendered dynamically -->
+      <div id="textInputs"></div>
+
+      <!-- No text detected -->
+      <p class="no-text hidden" id="noText">No text detected.</p>
+
+      <!-- Actions -->
+      <div class="panel-actions" id="panelActions">
+        <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveBtn" disabled>Save</button>
+      </div>
+    </section>
+
+    <!-- ── Global loading overlay ────────────────────── -->
+    <div class="overlay hidden" id="processingOverlay">
+      <div class="spinner large"></div>
+      <span>Removing text from image…</span>
+    </div>
+
+    <!-- ── Error toast ───────────────────────────────── -->
+    <div class="toast hidden" id="errorToast">
+      <span id="errorMessage">Something went wrong, try again.</span>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
