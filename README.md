@@ -18,7 +18,7 @@ This POC validates a simple user flow where someone can:
 
 🧩 What This POC Demonstrates
 
-- OCR integration (DeepSeek OCR) to extract text from images
+- OCR integration to extract text from images
 
 - A clean UI for editing each detected text line independently
 
